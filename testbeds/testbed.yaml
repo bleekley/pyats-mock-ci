@@ -1,0 +1,34 @@
+# GENERATED from the CML2 API (lab "pyATS Spine-Leaf Fabric").
+# Node labels + discovered Ethernet0/0 mgmt IPs were pulled from CML;
+# no address in this file was typed by hand.
+testbed:
+  name: pyATS-SpineLeaf-Fabric
+devices:
+  spine1:
+    os: ios
+    credentials:
+      default: {username: '%ENV{PYATS_UNAME}', password: '%ENV{PYATS_PWORD}'}
+      enable: {password: '%ENV{PYATS_PWORD}'}
+    connections:
+      cli: {protocol: ssh, ip: 198.18.250.87, port: 22}
+  spine2:
+    os: ios
+    credentials:
+      default: {username: '%ENV{PYATS_UNAME}', password: '%ENV{PYATS_PWORD}'}
+      enable: {password: '%ENV{PYATS_PWORD}'}
+    connections:
+      cli: {protocol: ssh, ip: 198.18.250.88, port: 22}
+  leaf1:
+    os: ios
+    credentials:
+      default: {username: '%ENV{PYATS_UNAME}', password: '%ENV{PYATS_PWORD}'}
+      enable: {password: '%ENV{PYATS_PWORD}'}
+    connections:
+      cli: {protocol: ssh, ip: 198.18.250.89, port: 22}
+  leaf2:
+    os: ios
+    credentials:
+      default: {username: '%ENV{PYATS_UNAME}', password: '%ENV{PYATS_PWORD}'}
+      enable: {password: '%ENV{PYATS_PWORD}'}
+    connections:
+      cli: {protocol: ssh, ip: 198.18.250.90, port: 22}

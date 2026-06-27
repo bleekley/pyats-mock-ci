@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+# pyATS run output (the committed recordings under records/ are the exception)
+*.log
+runinfo/
+archive/

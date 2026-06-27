@@ -1,0 +1,3 @@
+# Pinned so the recording and the replay use the same unicon that wrote it.
+# A matched set also avoids the easypy version-skew check that aborts mixed installs.
+pyats[full]==26.6

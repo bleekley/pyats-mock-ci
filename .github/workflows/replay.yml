@@ -1,0 +1,41 @@
+name: replay
+
+# Run the pyATS suite against committed device recordings on every push and PR.
+# No lab is reached: the runner cannot see the CML2 fabric, and it does not need to.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install pyATS
+        run: pip install -r requirements.txt
+
+      - name: Run the suite against the recordings (no lab)
+        env:
+          # Referenced by the testbed. In replay these are never sent anywhere,
+          # but pyATS still wants the testbed to resolve.
+          PYATS_UNAME: cisco
+          PYATS_PWORD: cisco
+        run: |
+          pyats run job job.py \
+            --testbed-file testbeds/testbed.yaml \
+            --replay records/
+
+      - name: Publish the pyATS archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyats-archive
+          path: ~/.pyats/archive/**/*.zip
+          if-no-files-found: ignore
