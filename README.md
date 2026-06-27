@@ -1,5 +1,7 @@
 # pyats-mock-ci
 
+[![replay](https://github.com/bleekley/pyats-mock-ci/actions/workflows/replay.yml/badge.svg)](https://github.com/bleekley/pyats-mock-ci/actions/workflows/replay.yml)
+
 Record a real network device once, then run pyATS tests against the recording in
 CI forever. No lab to license, boot, or reach from the pipeline.
 
